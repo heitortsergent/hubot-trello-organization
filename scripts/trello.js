@@ -18,7 +18,7 @@
 //   Manuel Ohlendorf <m.ohlendorf@gmail.com>
 
 var Trello = require('node-trello');
-var trello = new Trello(process.env.HUBOT_TRELLO_KEY, process.env.HUBOT_TRELLO_TOKEN)
+var trello = new Trello(process.env.HUBOT_TRELLO_KEY, process.env.HUBOT_TRELLO_TOKEN);
 
 module.exports = function (robot) {
 
@@ -39,7 +39,7 @@ module.exports = function (robot) {
     // Finds the room for most adaptors
     function findRoom(msg) {
         var room = msg.envelope.room;
-        if (room == undefined) {
+        if (room === undefined) {
             room = msg.envelope.user.reply_to;
         }
         return room;
@@ -212,7 +212,7 @@ module.exports = function (robot) {
         });
     });
 
-    robot.respond(/set board to [\\"\\'](.+)[\\"\\']$/i, function (msg) {
+    robot.respond(/set board to (.+)/i, function (msg) {
         ensureConfig(msg.send);
         var room = findRoom(msg);
         var boardName = msg.match[1];
@@ -232,12 +232,19 @@ module.exports = function (robot) {
         message.push("Use me to create/move cards and much more. Here's how:");
         message.push("");
         message.push(robot.name + " set board to \"<board name>\" - From now on this room is connected to the given board.");
-        message.push(robot.name + " show current board - Show the name of board the room is connected to.")
+        message.push(robot.name + " show current board - Show the name of board the room is connected to.");
         message.push(robot.name + " list boards - See all the trello boards for your organization.");
         message.push(robot.name + " list lists - Lists all the lists of your current board.");
         message.push(robot.name + " list cards in \"<list name>\" - Show all cards of the given list.");
         message.push(robot.name + " add new \"<card name>\" to \"<list name>\" - Add a new card to the list with the given name.");
         message.push(robot.name + " move \"<card shortLink>\" to \"<list name>\" - Move the card to a different list.");
         msg.send(message.join('\n'));
+    });
+    
+    robot.error(function(err,res) {
+      robot.logger.error("DOES NOT COMPUTE");
+      
+      if(res)
+        res.reply("DOES NOT COMPUTE");
     });
 };

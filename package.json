@@ -1,14 +1,14 @@
 {
-  "name": "hubot-trello-organization",
-  "version": "0.0.2",
-  "description": "manage your trello organization boards from hubot",
+  "name": "hubot-trello-organization-test",
+  "version": "0.0.1",
+  "description": "Manage your trello organization boards from hubot",
   "main": "index.coffee",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
     "type": "git",
-    "url": "git@github.com:mohlendo/hubot-trello-organization.git"
+    "url": "git@github.com:heitortsergent/hubot-trello-organization.git"
   },
   "keywords": [
     "hubot",
@@ -18,9 +18,9 @@
   "author": "Manuel Ohlendorf <m.ohlendorf@gmail.com>",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/mohlendo/hubot-trello-organization/issues"
+    "url": "https://github.com/heitortsergent/hubot-trello-organization/issues"
   },
-  "homepage": "https://github.com/mohlendo/hubot-trello-organization",
+  "homepage": "https://github.com/heitortsergent/hubot-trello-organization",
   "dependencies": {
     "node-trello": "^0.1.5"
   }

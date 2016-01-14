@@ -1,6 +1,6 @@
 {
   "name": "hubot-trello-organization-test",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "Manage your trello organization boards from hubot",
   "main": "index.coffee",
   "scripts": {

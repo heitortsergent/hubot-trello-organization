@@ -113,7 +113,7 @@ module.exports = function (robot) {
     ensureConfig(console.log);
 
     // lists all the boards of the organisation
-    robot.respond(/list boards$/i, function (msg) {
+    robot.respond(/list boards/i, function (msg) {
         msg.reply("Sure thing boss. I'll list the boards for you.");
         ensureConfig(msg.send);
 
@@ -129,7 +129,7 @@ module.exports = function (robot) {
     });
 
     // list all the list of the current board.
-    robot.respond(/list lists$/i, function (msg) {
+    robot.respond(/list lists/i, function (msg) {
         msg.reply("Looking up the lists, one sec.");
         ensureConfig(msg.send);
         findBoard(msg, function (board) {
@@ -147,7 +147,7 @@ module.exports = function (robot) {
     });
 
     // list all the cards in the given list of the current board
-    robot.respond(/list cards in [\\"\\'](.+)[\\"\\']$/i, function (msg) {
+    robot.respond(/list cards in (.+)/i, function (msg) {
         var listName = msg.match[1];
         msg.reply("Looking up the cards in list " + listName + ", one sec.");
         ensureConfig(msg.send);
@@ -172,7 +172,7 @@ module.exports = function (robot) {
         });
     });
 
-    robot.respond(/add new [\\"\\'](.+)[\\"\\'] to [\\"\\'](.+)[\\"\\']$/i, function (msg) {
+    robot.respond(/add new (.+) to (.+)/i, function (msg) {
         var cardName = msg.match[1];
         var listName = msg.match[2];
 
@@ -192,7 +192,7 @@ module.exports = function (robot) {
         });
     });
 
-    robot.respond(/move (\w+) to [\\"\\'](.+)[\\"\\']$/i, function (msg) {
+    robot.respond(/move (.+) to (.+)/i, function (msg) {
         var cardId = msg.match[1];
         var listName = msg.match[2];
 
@@ -220,7 +220,7 @@ module.exports = function (robot) {
         msg.send("Ok, from now on this room is connected to the trello board: " + boardName);
     });
 
-    robot.respond(/show current board$/i, function (msg) {
+    robot.respond(/show current board/i, function (msg) {
         ensureConfig(msg.send);
         var board = getRoomBoard(msg);
         msg.send("Roger! This room is connected to the Trello board: " + board);
